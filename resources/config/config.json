@@ -1,0 +1,241 @@
+{
+    "utils": {
+        "SensorDate": {
+            "sql_file": {
+                "sql_init": "resources/usecase/sensor/sensor_data/sensor_bq.sql"
+            }
+        },
+        "SensorRow": {
+            "sql_file": {
+                "sql_init": "resources/usecase/sensor/sensor_table_update/sensor_bq.sql"
+            },
+            "new_dataset":"referential_table",
+            "new_table":"referential_user_fournisseur_backup",
+            "current_dataset":"referential_table",
+            "current_table":"referential_user_fournisseur"
+        }
+    },
+    "a_referential_table": {
+        "ReferentialFournisseur": {
+            "sql_file": {
+                "sql_init": "resources/usecase/a_referential_table/referential_fournisseur/referential_fournisseur_init.sql",
+                "sql_current": "resources/usecase/a_referential_table/referential_fournisseur/referential_fournisseur.sql"
+            },
+            "initial_date": "2019-01-01"
+        },
+        "ReferentialFournisseurMarque": {
+            "sql_file": {
+                "sql_current": "resources/usecase/a_referential_table/referential_fournisseur_marque/referential_fournisseur_marque.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "table_full": "True"
+        },
+        "ReferentialStockProduct": {
+            "sql_file": {
+                "sql_current": "resources/usecase/a_referential_table/referential_stock_product/query_referential_stock_product.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "table_full": "True"
+        },
+        "ReferentialStockMagasinsGeo": {
+            "sql_file": {
+                "sql_current": "resources/usecase/a_referential_table/referential_stock_magasins_geo/query_referential_stock_magasins_geo.sql"
+            },
+            "table_full": "True",
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "ReferentialMagasinsGeo": {
+            "sql_file": {
+                "sql_current": "resources/usecase/a_referential_table/referential_vente_magasins_geo/query_referential_magasins_geo.sql"
+            },
+            "table_full": "True",
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "ReferentialVenteProduct": {
+            "sql_file": {
+                "sql_current": "resources/usecase/a_referential_table/referential_vente_product/query_referential_vente_product.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "table_full": "True"
+        },
+        "ReferentialUserFournisseurBackup": {
+            "sql_file": {
+                "sql_current": "resources/usecase/a_referential_table/referential_user_fournisseur/query_referential_user_fournisseur_backup.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "table_full": "True"
+        }
+    },
+    "b_datamarts": {
+        "InsightsEcommerce": {
+            "sql_file": {
+                "fnac_sql": "resources/usecase/b_datamarts/insights_ecommerce/fnac/sql/query_insight_ecommerce_fnac.sql",
+                "darty_sql": "resources/usecase/b_datamarts/insights_ecommerce/darty/sql/query_insight_ecommerce_darty.sql"
+            }
+        },
+        "InsightsEcommerceMotCle": {
+            "sql_file": {
+                "fnac_sql": "resources/usecase/b_datamarts/insights_ecommerce/fnac/sql/query_insight_ecommerce_fnac_mot_cle.sql",
+                "darty_sql": "resources/usecase/b_datamarts/insights_ecommerce/darty/sql/query_insight_ecommerce_darty_mot_cle.sql"
+            }
+        },
+        "InsightsClient": {
+            "sql_file": {
+                "fnac_niv1_2_3_sql": "resources/usecase/b_datamarts/insights_clients/fnac/sql/insights_clients_fnac_init_niv_1_2_3.sql",
+                "fnac_niv4_sql": "resources/usecase/b_datamarts/insights_clients/fnac/sql/insights_clients_fnac_init_niv_4.sql",
+                "fnac_key_value": "resources/usecase/b_datamarts/insights_clients/fnac/sql/insights_clients_fnac_key_value.sql",
+                "darty_niv1_2_3_sql": "resources/usecase/b_datamarts/insights_clients/darty/sql/insights_clients_darty_init_niv_1_2_3.sql",
+                "darty_niv4_sql": "resources/usecase/b_datamarts/insights_clients/darty/sql/insights_clients_darty_init_niv_4.sql",
+                "darty_key_value": "resources/usecase/b_datamarts/insights_clients/darty/sql/insights_clients_darty_key_value.sql"
+            },
+            "query_builder": "True",
+            "field_time_partitioning": "import_date"
+        },
+        "InsightsStock": {
+            "sql_file":{
+                "sql_path ": "resources/usecase/b_datamarts/insights_stock/sql/insights_stock.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "field_time_partitioning": "import_date"
+        }, 
+        "InsightsStockStep1": {
+            "sql_file":{
+                "sql_path ": "resources/usecase/b_datamarts/insights_stock/sql/insights_stock_step1.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "field_time_partitioning": "import_date"
+        }, 
+        "InsightsVente": {
+            "sql_file": {
+                "sql_path": "resources/usecase/b_datamarts/insights_ventes/sql/insights_ventes.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+            
+        }
+    },
+    "c_dashboard": {
+        "EcommerceAgg": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ecommerce/sql/insights_ecommerce_agg.sql"
+            }
+        },
+        "EcommerceAggComex": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ecommerce/sql/insights_ecommerces_agg_comex.sql"
+            }
+        },
+        "EcommerceGeo": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ecommerce/sql/insights_ecommerce_geo.sql"
+            }
+        },
+        "EcommerceTraffic": {
+            "sql_file" : {
+                "sql_path": "resources/usecase/c_dashboard/ecommerce/sql/insights_ecommerce_trafic.sql"
+            }
+        },
+        "EcommerceTrafficComex": {
+            "sql_file" : {
+                "sql_path": "resources/usecase/c_dashboard/ecommerce/sql/insights_ecommerces_agg_comex.sql"
+            }
+        },
+        "EcommerceMotCleAgg": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ecommerce/sql/insights_ecommerce_mot_cle_agg.sql"
+            }
+        },
+        "StockLastDay": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/stock/sql/insights_stock_last_day.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "table_full": "True"
+        },
+        "StockLastTwelveMonths": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/stock/sql/insights_stock_last_twelve_months.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "field_time_partitioning": "import_date"
+        },
+        "VentesAgg": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ventes/sql/insights_ventes_agg.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "VentesGeo": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ventes/sql/insights_ventes_geo.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "VentesAggComex": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ventes/sql/insights_ventes_agg_comex.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "VentesGeoComex": {
+            "sql_file": {
+                "sql_path": "resources/usecase/c_dashboard/ventes/sql/insights_ventes_geo_comex.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        }
+    },
+    "d_extract_tableau": {
+        "AllClients": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_clients.sql"
+                
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "field_time_partitioning": "import_date"
+        },
+        "AllStockLastDay": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_stocks_last_day.sql"
+            },
+            "field_time_partitioning": "import_date",
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "AllStockTwelveMonths": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_stocks_last_twelve_months.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE",
+            "field_time_partitioning": "import_date"
+        },
+        "DailyEcommerceAgg": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_ecommerces_agg.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "DailyEcommerceMotCleAgg": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_ecommerces_mot_cle_agg.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "DailyEcommerceTraffic": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_ecommerces_trafic.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "DailyVentesAgg": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_ventes_agg.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        },
+        "DailyVentesGeo": {
+            "sql_file": {
+                "sql_path": "resources/usecase/d_extract_tableau/extract_c_dashboard/all_user_filter/insights_ventes_geo.sql"
+            },
+            "write_disposition": "WRITE_TRUNCATE"
+        }
+        
+    }
+}

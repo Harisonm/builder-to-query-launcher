@@ -1,0 +1,19 @@
+#image: docker:latest
+#
+#stages:
+#  - deploy
+#
+#deploy:
+#  stage: deploy
+#  image: google/cloud-sdk
+#  services:
+#    - docker:dind
+#  script:
+#    - echo $service_account | base64 -d > ${HOME}/service_account.json
+#    - gcloud auth activate-service-account --key-file ${HOME}/service_account.json
+#    - gcloud config set project $project_id
+#    - gcloud config set run/region EU
+#    - gcloud config set account $account
+#    - gcloud builds submit . --config=cloudbuild.yaml
+#  only:
+#    - master
